@@ -1,7 +1,7 @@
 from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram import executor
-fron aiogram import types
+from aiogram import types
 from aiogram.types import Message, CallbackQuery, ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.types.web_app_info import WebAppInfo
@@ -119,7 +119,7 @@ async def Games(message: types.Message):
     await message.answer('Я хагадал число 1 до 100. Попробуйте его угадать!')
     await GuessNumber.waiting_for_number.set()
 
-@dp.message_handler(state=GuessNumber.waiting_for_number, content_types.ContentType.TEXT)
+@dp.message_handler(state=GuessNumber.waiting_for_number, content_types= types.ContentType.TEXT)
 async def check_number(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         number = data['number']
@@ -139,7 +139,7 @@ async def check_number(message: types.Message, state: FSMContext):
 @dp.message_handler(command = ['Zero'])
 async def  Zero_games(message: types.Message):
     await message.answer('Привет! Давай сыграем в крестики-нолики')
-    await message.answer('Выбери крестики или нолики', reply.markup=ReplyKeyboardMarkup(resize_keyboard=True))
+    await message.answer('Выбери крестики или нолики', reply_markup=ReplyKeyboardMarkup(resize_keyboard=True))
 
     
 
